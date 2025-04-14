@@ -1,0 +1,38 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# Output folders
+bin/
+build/
+
+# IDEs / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Go-specific
+vendor/
+*.mod~
+*.sum~
+go.sum
+
+# Dependency directories (Go modules)
+**/vendor/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs / debug
+*.log
+*.out
+
+# Docker
+*.env
+docker-compose.override.yml
