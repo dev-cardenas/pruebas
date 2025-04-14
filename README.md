@@ -63,22 +63,6 @@ Sigue el principio de SOLID, particularmente el principio de responsabilidad ún
 🔌 internal/infrastructure/ (Infraestructura)
 En esta capa se gestionan las dependencias externas como bases de datos, HTTP o servicios de terceros. Aquí se incluyen los adaptadores que conectan el dominio con estas tecnologías.
 
-Archivos:
-
-db/postgres/db.go: Conecta con la base de datos PostgreSQL usando pgxpool.
-
-db/postgres/user_repository.go: Implementa las interfaces definidas en domain/user/repository.go para interactuar con la base de datos.
-
-http/gin/router.go: Define las rutas y configuraciones del servidor HTTP (usando Gin).
-
-http/gin/handler.go: Contiene las funciones que traducen entre el dominio y las peticiones HTTP, como crear, actualizar o eliminar usuarios.
-
-¿Por qué está aquí?
-
-Separamos la infraestructura del dominio para que el código del dominio no dependa de tecnologías específicas. Esto hace que la arquitectura sea flexible y fácil de modificar.
-
-Si en algún momento decidimos cambiar de framework (por ejemplo, de Gin a Fiber), solo necesitaríamos modificar esta capa.
-
 🎯 internal/application/user/ (Aplicación)
 Esta capa orquesta los casos de uso de la aplicación. Aquí se definen las acciones que pueden realizar los usuarios, como crear, actualizar o eliminar un usuario.
 
@@ -87,15 +71,6 @@ Esta capa orquesta los casos de uso de la aplicación. Aquí se definen las acci
 Separa la lógica de negocio de la lógica de infraestructura. Esto permite que los casos de uso puedan evolucionar de manera independiente de las tecnologías externas.
 
 Ideal para agregar validaciones, reglas de negocio complejas o coordinar diferentes servicios.
-
-🧪 test/user/service_test.go (Pruebas unitarias)
-Los tests unitarios se centran en la lógica de negocio pura, sin involucrar las dependencias externas (como bases de datos o servicios HTTP). Esto permite pruebas rápidas y confiables.
-
-¿Por qué está aquí?
-
-Se asegura que las reglas del negocio se comporten correctamente sin tener que depender de la infraestructura externa.
-
-Sigue el principio de Testabilidad y Responsabilidad Única, permitiendo una rápida evolución del código de negocio con pruebas automatizadas.
 
 🧩 Patrones aplicados
 
